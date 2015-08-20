@@ -38,7 +38,7 @@
   	},
 
   	/**
-  	 * 
+  	 *
   	 */
   	parsed: function(chapters) {
   		ChapterDock.chapters = chapters;
@@ -59,7 +59,7 @@
   	},
 
   	/**
-  	 * 
+  	 *
   	 */
   	theme: function(chapters) {
       var css = {
@@ -155,7 +155,7 @@
   	},
 
   	/**
-  	 * 
+  	 *
   	 */
   	tick: function(position) {
   		var chapters = ChapterDock.chapters;
@@ -163,7 +163,7 @@
 
   		for (var i = 0; i < chapters.length; i++) {
         if (chapters[i]['text'] == '') continue;
-  
+
         if (chapters[i]['begin'] < position && (i == chapters.length-1 || chapters[i+1]['begin'] > position)) {
           found = i;
           break;
@@ -174,10 +174,10 @@
   			ChapterDock.chapterCurrent = found;
 
   			if (found > -1 ) {
-  				ChapterDock.onSelect(chapters[found]);
+  				ChapterDock.onSelect(chapters[found], ChapterDock);
   			}
   			else {
-  				ChapterDock.onSelect({text:''});
+  				ChapterDock.onSelect({text:''}, ChapterDock);
   			};
   		};
   	}
@@ -201,7 +201,7 @@
       $.get(url, function(data) {
         SRT.captions = SRT.parse(data);
         success(SRT.captions);
-      });		
+      });
     },
 
     /**
